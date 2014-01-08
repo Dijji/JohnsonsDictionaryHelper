@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright (c) 2014, Dijji, and released under BSD, as defined by the text in the root of this distribution.-->
+<?define ProductName = "Johnson's Dictionary Transcription Helper" ?>
+<?define ProductVersion = "0.9.1" ?>
+<?define ProductFolder = "Johnson's Dictionary" ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="3AE606DD-504A-42C4-BFE6-C52F637EE4DC" Name="$(var.ProductName) (v$(var.ProductVersion))" Language="1033" Version="0.9.1.0" Manufacturer="Dijji" UpgradeCode="FA9F5F5C-9D3F-4EE0-ACC7-CF5A24341F0E">
+		<Package InstallerVersion="400" Compressed="yes" InstallScope="perMachine" />
+
+    <PropertyRef Id="NETFRAMEWORK35"/>
+    <Condition Message='[ProductName] requires .NET Framework 3.5 or later to be installed.'>
+      <![CDATA[Installed OR NETFRAMEWORK35]]>
+    </Condition>
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="PF_Helper" Title="Helper" Level="1">
+      <ComponentGroupRef Id="COMP_Helper" />
+      <!--<MergeRef Id="AWESOMIUM" />-->
+    </Feature>
+
+    <Property Id="INSTALLDESKTOPSHORTCUT" Value="1" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
+    <WixVariable Id="WixUILicenseRtf" Value="..\Simplified BSD License.rtf" />
+    <UIRef Id="Custom_InstallDir" />
+
+    <Icon Id="JohnsonIcon" SourceFile="$(var.Johnson.ProjectDir)\Resources\johnson.ico"/>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="$(var.ProductFolder)">
+          <Directory Id="RESOURCEFOLDER" Name="Resources"/>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="DIR_Shortcuts" Name="$(var.ProductFolder)"/>
+      </Directory>
+      <Directory Id="DesktopFolder"/>
+      <!--<Merge Id="AWESOMIUM" Language="1033" SourceFile="C:\Program Files (x86)\Awesomium Technologies LLC\Awesomium SDK\1.7.3.0\wrappers\Awesomium.NET\Redistribute\AWENET0173F.msm" DiskId="1" />-->
+    </Directory>
+
+    <ComponentGroup Id="COMP_Helper">
+      <Component Id="COMP_HelperExe"  Directory="INSTALLFOLDER" Guid="F8556A76-B774-40C6-BCDF-CFF04AE5F4CA">
+        <File KeyPath="yes" Source="$(var.Johnson.TargetPath)" />
+      </Component>
+      <Component Id="COMP_HelperStyle"  Directory="RESOURCEFOLDER" Guid="15090AB9-D2A0-4459-8ED1-45952182A8C9">
+        <File Source="$(var.Johnson.ProjectDir)\Resources\style.css" />
+      </Component>
+      <Component Id="COMP_HelperScript"  Directory="RESOURCEFOLDER" Guid="32D61500-8C04-4631-8E50-D05CB840F4F1">
+        <File Source="$(var.Johnson.ProjectDir)\Resources\script.js" />
+      </Component>
+      <Component Id="COMP_3LineBracket"  Directory="RESOURCEFOLDER" Guid="BA75DDDC-B261-4630-AC94-7F42556666CD">
+        <File Source="$(var.Johnson.ProjectDir)\Resources\right-3line-bracket.gif" />
+      </Component>
+      <Component Id="COMP_4LineBracket"  Directory="RESOURCEFOLDER" Guid="9AE0B608-15DC-43A2-A5C7-60E5015408FE">
+        <File Source="$(var.Johnson.ProjectDir)\Resources\right-4line-bracket.gif" />
+      </Component>
+      <!--<Component Id="COMP_GACDummy"  Directory="INSTALLFOLDER" Guid="77C0325A-C7DB-474F-A147-4AABA65EDCAC">
+        <File Assembly=".net" KeyPath="yes" Source="$(var.GACDummy.TargetPath)" />
+      </Component>-->
+      <Component Id="COMP_HelperShortcut" Directory="ProgramMenuFolder" Guid="0440DDCB-5984-4086-862F-AA4A30423B04">
+        <Shortcut Id="SHORT_Helper" Directory="DIR_Shortcuts"
+                  Name="Transcription Helper" Icon="JohnsonIcon"
+                  Target="[INSTALLFOLDER]Johnson.exe"/>
+        <RemoveFolder Id="RemoveDIR_Shortcuts" Directory="DIR_Shortcuts" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\Dijji\JohnsonsDictionary" Name="MenuSC" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+      <Component Id="COMP_DesktopShortcut" Directory="INSTALLFOLDER" Guid="FF611FD3-CEA2-4FCE-91BE-E78BB2588B4D">
+        <Condition>INSTALLDESKTOPSHORTCUT</Condition>
+        <Shortcut Id="SHORT_DesktopHelper" Directory="DesktopFolder"
+                  Name="Johnson" Icon="JohnsonIcon"
+                  Target="[INSTALLFOLDER]Johnson.exe" Advertise="no"/>
+        <RegistryValue Root="HKCU" Key="Software\Dijji\JohnsonsDictionary" Name="DesktopSC" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Product>
+</Wix>
