@@ -1,0 +1,64 @@
+/*
+Theme Name: Johnson
+Theme URI: http://johnsonsdictionaryonline.com/
+Description: Theme developed for a Dictionary site.
+Author: Brandi Besalke
+Author URI: http://brandibesalke.wordpress.com/
+Version: 1.0 
+
+License:
+License URI:
+
+General comments (optional).
+*/
+
+
+body,
+html {
+margin:0;
+padding:0;
+color:#000;
+background: #F6E6C8;
+font-family: Georgia, "Times New Roman", "Times", serif;	
+}
+
+#wrap {
+margin:0 auto;
+}
+
+#main {
+font-family: Georgia, "Times New Roman", "Times", serif;	
+line-height: 120%;
+}
+
+.mainText {
+	padding: 5px; 
+	margin-top: 5px; 
+	margin-bottom: 10px; 
+	background-color: white;
+}
+
+#content {
+width: 950px;
+padding: 15px;
+margin-left: auto;
+margin-right: auto;
+background-color: #F6E6C8;
+border: 1px dotted #000;
+}
+
+.headword {
+	color: #990033;
+	font-size: 150%;
+	font-variant: small-caps;
+}
+
+.headword2 {
+	color: #990033;
+	font-size: 125%;
+	font-variant: small-caps;
+}
+
+.quotedText {
+	color: #005D8E;
+}
