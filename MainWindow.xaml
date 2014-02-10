@@ -91,11 +91,13 @@
         <Style TargetType="TreeViewItem">
             <Setter Property="IsExpanded" Value="True" />
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue"/>
         </Style>
 
         <!--Stretch ListBox items to the full width of the ListBox-->
         <Style TargetType="ListBoxItem">
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue"/>
         </Style>
 
         <j:EnumMatchToBooleanConverter x:Key="enumBoolConverter" />
@@ -155,7 +157,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <ToolBar>
+                <ToolBar KeyboardNavigation.TabNavigation="Local">
                     <Button Command="j:Command.Italicise" IsEnabled="{Binding Path=HaveSelection}" ToolTip="Italicise selection" Content="I" FontStyle="Italic" FontWeight="Bold" FontFamily="Times New Roman"/>
                     <Button Command="j:Command.AEUpper" IsEnabled="{Binding Path=CanInsert}" ToolTip="Insert Æ" Content="Æ" FontWeight="Bold" FontFamily="Times New Roman"/>
                     <Button Command="j:Command.AELower" IsEnabled="{Binding Path=CanInsert}" ToolTip="Insert æ" Content="æ" FontWeight="Bold" FontFamily="Times New Roman"/>
@@ -305,7 +307,8 @@
                     </Grid.ColumnDefinitions>
                     <!--Turning off the Horizontal scroll bar tells ListItems to size to fit the ListBox-->
                     <ListBox Grid.Column="0" Name="listQuoteSingle" ItemsSource="{Binding Path=GeneralQuotes}" 
-                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemTemplate="{StaticResource QuoteTemplate}"/>
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemTemplate="{StaticResource QuoteTemplate}"
+                             KeyboardNavigation.TabNavigation="Local"/>
                     <StackPanel Grid.Column="1" Orientation="Vertical">
                         <Button Click="AddGeneralQuote_Click">
                             <TextBlock Text="Add Quote" TextWrapping="Wrap" TextAlignment="Center" ToolTip="Add a new quotation"/>
@@ -332,7 +335,8 @@
                         <ColumnDefinition Width="50"/>
                     </Grid.ColumnDefinitions>
                     <ListBox Grid.Column="0" Name="listDefinitionNumCommon" ItemsSource="{Binding Path=Definitions}"
-                             ItemTemplate="{StaticResource DefinitionTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                             ItemTemplate="{StaticResource DefinitionTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             KeyboardNavigation.TabNavigation="Local"/>
                     <StackPanel Grid.Column="1" Orientation="Vertical">
                         <Button Click="AddDefinition_Click">
                             <TextBlock Text="Add Defini-tion" TextWrapping="Wrap" TextAlignment="Center" ToolTip="Add a new definition"/>
@@ -349,7 +353,8 @@
                         <ColumnDefinition Width="50"/>
                     </Grid.ColumnDefinitions>
                     <ListBox Grid.Column="0" Name="listQuoteNumCommon" ItemsSource="{Binding Path=GeneralQuotes}"
-                              ItemTemplate="{StaticResource QuoteTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                              ItemTemplate="{StaticResource QuoteTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             KeyboardNavigation.TabNavigation="Local"/>
                     <StackPanel Grid.Column="1" Orientation="Vertical">
                         <Button Click="AddGeneralQuote_Click">
                             <TextBlock Text="Add Quote" TextWrapping="Wrap" TextAlignment="Center" ToolTip="Add a new quotation"/>
@@ -387,7 +392,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
-                        <TreeView Grid.Column="0" Name="treeDefinitionNumEach" SizeChanged="treeDefinitionNumEach_SizeChanged">
+                        <TreeView Grid.Column="0" Name="treeDefinitionNumEach" SizeChanged="treeDefinitionNumEach_SizeChanged" KeyboardNavigation.TabNavigation="Local">
                             <TreeViewItem ItemsSource="{Binding Path=Definitions}" Header="definitions"/>
                         </TreeView>
                         <StackPanel Grid.Column="1" Orientation="Vertical">
