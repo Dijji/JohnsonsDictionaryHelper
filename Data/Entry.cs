@@ -127,9 +127,11 @@ namespace Johnson
             Definitions.Clear();
         }
 
-        public void AddDefinition()
+        public Definition AddDefinition()
         {
-            Definitions.Add(new Definition(window, this));
+            Definition d = new Definition(window, this);
+            Definitions.Add(d);
+            return d;
         }
 
         public void RemoveDefinition(Definition d)
@@ -142,9 +144,11 @@ namespace Johnson
             Definitions.RemoveAt(index);
         }
 
-        public void AddGeneralQuote()
+        public Quote AddGeneralQuote()
         {
-            GeneralQuotes.Add(new Quote(window, this));
+            Quote q = new Quote(window, this);
+            GeneralQuotes.Add(q);
+            return q;
         }
 
         public void RemoveGeneralQuoteAt(int index)

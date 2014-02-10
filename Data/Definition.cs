@@ -26,9 +26,11 @@ namespace Johnson
         [XmlIgnore]
         public double TreeViewItemWidth { get { return window.TreeViewWidth - Entry.DefinitionTreeDelta; } }
 
-        public void AddQuote()
+        public Quote AddQuote()
         {
-            Quotes.Add(new Quote(window, this));
+            Quote q = new Quote(window, this);
+            Quotes.Add(q);
+            return q;
         }
 
         public void RemoveQuote(Quote q)
