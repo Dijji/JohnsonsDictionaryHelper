@@ -168,12 +168,30 @@ namespace Johnson
 
         private void AddDefinition_Click(object sender, RoutedEventArgs e)
         {
-            entry.AddDefinition();
+            Definition d = entry.AddDefinition();
+
+            if (entry.Style == EntryStyle.NumEach)
+            {
+                UIHelpers.ExpandAndSelectTreeViewItem(treeDefinitionNumEach, d);
+            }
+            else if (entry.Style == EntryStyle.NumCommon)
+            {
+                UIHelpers.SelectListBoxItem(listDefinitionNumCommon, d);
+            } 
         }
 
         private void AddGeneralQuote_Click(object sender, RoutedEventArgs e)
         {
-            entry.AddGeneralQuote();
+            Quote q = entry.AddGeneralQuote();
+
+            if (entry.Style == EntryStyle.Single)
+            {
+                UIHelpers.SelectListBoxItem(listQuoteSingle, q);
+            } 
+            else if (entry.Style == EntryStyle.NumCommon)
+            {
+                UIHelpers.SelectListBoxItem(listQuoteNumCommon, q);
+            }          
         }
 
         private void RemoveGeneralQuoteSingle_Click(object sender, RoutedEventArgs e)
@@ -233,7 +251,7 @@ namespace Johnson
             }
             if (d != null)
             {
-                d.AddQuote();
+                UIHelpers.ExpandAndSelectTreeViewItem(treeDefinitionNumEach, d.AddQuote());
             }
         }
 
@@ -252,7 +270,7 @@ namespace Johnson
         private string FileNameFromEntryId(string id)
         {
             // More to come here as they emerge
-            return id.Replace("&AElig;", "Ae").Replace("&OElig;", "Oe");
+            return id.Replace("&AElig;", "Ae").Replace("&OElig;", "Oe").Replace("&rsquo;", "'");
         }
 
         private bool HaveValidEntryId()
@@ -821,6 +839,8 @@ namespace Johnson
             return result;
         }
         #endregion
+
+
     }
 
 }
