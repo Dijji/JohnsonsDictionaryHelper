@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Copyright (c) 2014, Dijji, and released under BSD, as defined by the text in the root of this distribution.-->
 <?define ProductName = "Johnson's Dictionary Transcription Helper" ?>
-<?define ProductVersion = "0.9.1" ?>
+<?define ProductVersion = "0.9.2" ?>
 <?define ProductFolder = "Johnson's Dictionary" ?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="3AE606DD-504A-42C4-BFE6-C52F637EE4DC" Name="$(var.ProductName) (v$(var.ProductVersion))" Language="1033" Version="0.9.1.0" Manufacturer="Dijji" UpgradeCode="FA9F5F5C-9D3F-4EE0-ACC7-CF5A24341F0E">
+	<Product Id="3AE606DD-504A-42C4-BFE6-C52F637EE4DC" Name="$(var.ProductName) (v$(var.ProductVersion))" Language="1033" Version="0.9.2.0" Manufacturer="Dijji" UpgradeCode="FA9F5F5C-9D3F-4EE0-ACC7-CF5A24341F0E">
 		<Package InstallerVersion="400" Compressed="yes" InstallScope="perMachine" />
 
     <PropertyRef Id="NETFRAMEWORK35"/>
