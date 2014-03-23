@@ -60,6 +60,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command.cs" />
+    <Compile Include="ShiftTabTreeView.cs" />
     <Compile Include="Utilities\EnumMatchToBooleanConverter.cs" />
     <Compile Include="Data\Definition.cs" />
     <Compile Include="Data\Entry.cs" />

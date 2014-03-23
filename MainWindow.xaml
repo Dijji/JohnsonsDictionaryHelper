@@ -392,9 +392,9 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
-                        <TreeView Grid.Column="0" Name="treeDefinitionNumEach" SizeChanged="treeDefinitionNumEach_SizeChanged" KeyboardNavigation.TabNavigation="Local">
+                        <j:ShiftTabTreeView Grid.Column="0" x:Name="treeDefinitionNumEach" SizeChanged="treeDefinitionNumEach_SizeChanged" KeyboardNavigation.TabNavigation="Local">
                             <TreeViewItem ItemsSource="{Binding Path=Definitions}" Header="definitions"/>
-                        </TreeView>
+                        </j:ShiftTabTreeView>
                         <StackPanel Grid.Column="1" Orientation="Vertical">
                             <Button Click="AddDefinition_Click">
                                 <TextBlock Text="Add Defini-tion" TextWrapping="Wrap" TextAlignment="Center" ToolTip="Add a new definition"/>
